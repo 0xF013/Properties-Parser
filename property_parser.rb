@@ -10,6 +10,7 @@ class PropertyParser
     p "Parsing #{file_path}, #{extension}"
     if parsers.key? extension
       result = parsers[extension].parse(file_path)
+      p "Result size: #{result.length}" 
       p "File structure:"
       PP::pp result
     else
