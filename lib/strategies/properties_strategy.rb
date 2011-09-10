@@ -1,8 +1,8 @@
-class PropertiesParser
-  def parse (file_path)
+require './lib/strategies/base_strategy'
+class PropertiesStrategy < BaseStrategy
+  def parse (lines)
     properties = {}
-    File.open(file_path, 'r') do |properties_file|
-      properties_file.read.each_line do |line|
+    lines.each do |line|
         line.strip!
         if (line[0] != ?# and line[0] != ?=)
           i = line.index('=')
@@ -12,7 +12,6 @@ class PropertiesParser
             properties[line] = ''
           end
         end
-      end
     end
     properties
   end
